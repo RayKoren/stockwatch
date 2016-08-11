@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="stockWatch">
+  <head>
+    <meta charset="utf-8">
+    <title>Stockwatch</title>
+    <!-- SCROLLS -->
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+   <style>
+       html                    { overflow-y:scroll; }
+       body                    { padding-top:50px; }
+       #stock-list              { margin-bottom:30px; }
+   </style>
+
+   <!-- SPELLS -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+   <script src="core.js"></script>
+  </head>
+
+  <body ng-controller="mainController">
+    <div class="container">
+
+        <!-- HEADER AND TODO COUNT -->
+        <div class="jumbotron text-center">
+            <h1><span class="label label-info">Stock Watch</span></h1>
+        </div>
+        <!-- Stock LIST -->
+                <div id="stock-list" class="row">
+                    <div class="text-center col-sm-8 col-sm-offset-2 ">
+                        <div>
+                            <label>
+                               <h2>Name: {{ stockName }}</h2>
+                               <h2>Ask: {{ stockPrice }}</h2>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+        <!-- FORM TO GET STOCK QUOTE -->
+        <div id="stockSymbol-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Enter A Stock Symbol" ng-model="formData.text">
+                    </div>
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="getQuote()">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
