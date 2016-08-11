@@ -5,6 +5,7 @@ var stockPrice;
 var stockName;
 var stockSymbol;
 var chart;
+
 function mainController($scope, $http) {
     $scope.formData = {};
 
@@ -14,19 +15,36 @@ function mainController($scope, $http) {
                 console.log(data);
                 var stockPrice = data.query.results.quote.Ask;
                 var stockName = data.query.results.quote.Name;
-								var stockSymbol = data.query.results.quote.Symbol;
-								var stockOpen = data.query.results.quote.Open;
+                var stockSymbol = data.query.results.quote.Symbol;
+                var stockOpen = data.query.results.quote.Open;
+								var DaysHigh = data.query.results.quote.DaysHigh;
+								var DaysLow = data.query.results.quote.DaysLow;
                 $scope.stockName = stockName;
                 $scope.stockPrice = stockPrice;
-								$scope.stockSymbol = stockSymbol;
-								var chart = c3.generate({
-								    bindto: '#chart',
-								    data: {
-								      columns: [
-								        ['data1', stockOpen, stockPrice],
-								      ]
-								    }
-								});
+                $scope.stockSymbol = stockSymbol;
+								var d = new Date();
+                var chart = c3.generate({
+                    bindto: '#chart',
+                    data: {
+											x: 'x',
+                        columns: [
+                            ['Today', stockOpen, stockPrice],
+														['High/Low', DaysLow, DaysHigh],
+														['x', d.setHours(9,0,0,0), Date.now()]
+                        ]
+                    },
+                    axis: {
+											x: {
+												type: 'timeseries',
+												            localtime: true,
+												            tick: {
+												                format: '%Y-%m-%d %H:%M:%S'}},
+                        y: {
+                            label: 'Price'
+                        }
+                    }
+
+                });
             })
             .error(function(data) {
                 console.log('Error: ' + data);

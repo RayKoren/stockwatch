@@ -1,0 +1,14 @@
+
+html {
+    overflow-y: scroll;
+}
+body {
+    padding-top: 50px;
+}
+#stock-list {
+    margin-bottom: 30px;
+}
+.jumbotron {
+    background-image: url("https://c5.staticflickr.com/3/2882/8973462052_59f477d21f_b.jpg");
+    background-size: cover;
+}

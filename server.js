@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var moment = require('moment');
 require('dotenv').config();
 require('./app/routes.js')(app);
 // configuration =================
