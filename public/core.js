@@ -17,30 +17,40 @@ function mainController($scope, $http) {
                 var stockName = data.query.results.quote.Name;
                 var stockSymbol = data.query.results.quote.Symbol;
                 var stockOpen = data.query.results.quote.Open;
-								var DaysHigh = data.query.results.quote.DaysHigh;
-								var DaysLow = data.query.results.quote.DaysLow;
+                var DaysHigh = data.query.results.quote.DaysHigh;
+                var DaysLow = data.query.results.quote.DaysLow;
                 $scope.stockName = stockName;
                 $scope.stockPrice = stockPrice;
                 $scope.stockSymbol = stockSymbol;
-								var d = new Date();
+                var d = new Date();
+
+
                 var chart = c3.generate({
+
                     bindto: '#chart',
                     data: {
-											x: 'x',
+                        x: 'x',
                         columns: [
                             ['Today', stockOpen, stockPrice],
-														['High/Low', DaysLow, DaysHigh],
-														['x', d.setHours(9,0,0,0), Date.now()]
-                        ]
+                            ['High/Low', DaysLow, DaysHigh],
+                            ['x', d.setHours(9, 0, 0, 0), Date.now()]
+                        ],
+                        type: 'area',
+                        types: {
+                            Today: 'line'
+												}
                     },
                     axis: {
-											x: {
-												type: 'timeseries',
-												            localtime: true,
-												            tick: {
-												                format: '%Y-%m-%d %H:%M:%S'}},
+                        x: {
+                            type: 'timeseries',
+                            localtime: true,
+                            tick: {
+                                format: '%Y-%m-%d %H:%M'
+                            }
+                        },
                         y: {
-                            label: 'Price'
+                            label: 'Price',
+														min: DaysLow
                         }
                     }
 
