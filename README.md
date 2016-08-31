@@ -1,4 +1,5 @@
 # Stock Watch
 App that lets users display stock quotes.
-Angular, Node, Express, C3js, C3js, Bootstrap
+AngularJS, Node.js, Express, C3js, D3js, Bootstrap
 https://thestockwatchapp.herokuapp.com/
+![ScreenShot](/stockwatchscreen.png)
